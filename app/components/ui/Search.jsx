@@ -27,7 +27,7 @@ export default function Search({ setSearchModal }) {
               className="border-none outline-none rounded-md px-4 py-2 w-full mb-4"
               placeholder="Search..."
             />
-            <ul>
+            <ul className=" p-2 md:p-4">
               <li className="flex items-center cursor-pointer justify-between p-2 hover:bg-primary transition-all">
                 <div className="relative   flex-shrink-0">
                   <Image src={Pizza} alt="" width={48} height={48} />
