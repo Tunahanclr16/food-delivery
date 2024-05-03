@@ -14,7 +14,6 @@ export default function Hero() {
           objectFit="cover"
           objectPosition="center"
         />
-        
       </div>
       <div className="absolute text-white top-32 md:top-48 container mx-auto inset-0 flex flex-col items-start gap-y-4 md:gap-y-10">
         <Title addClass="text-4xl lg:text-6xl text-white" title={"Fast Food Restaurant"}/>
