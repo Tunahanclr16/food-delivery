@@ -41,7 +41,7 @@ export default function Header() {
               <div onClick={()=>setIsMenuOpen(false)} className="absolute cursor-pointer right-4 top-4">
               <IoMdClose size={28}/>
               </div>
-            <ul className=" items-center justify-center h-full gap-5 font-bold  text-sm flex flex-col md:text-[1rem] font-open uppercase text-black">
+            <ul className=" items-center justify-center h-full gap-5 font-bold  text-base flex flex-col md:text-[1rem] font-open uppercase text-black">
               
               <li className=" hover:text-primary transition-all cursor-pointer">
                 <a href="">Home</a>
