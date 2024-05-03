@@ -37,13 +37,9 @@ export default function Header() {
                 <a href="">Book Table</a>
               </li>
             </ul>
-            {isMenuOpen && (
-              <div className="bg-black/80 fixed w-full h-screen top-0 left-0 z-10 ">
-           </div>
-            )}
             <div className={ isMenuOpen ? "fixed top-0 left-0 w-full h-screen bg-white z-10 duration-300" : "fixed top-0 left-[-100%] w-[300px] h-screen bg-white z-10 duration-300"}>
               <div onClick={()=>setIsMenuOpen(false)} className="absolute cursor-pointer right-4 top-4">
-              <IoMdClose size={24}/>
+              <IoMdClose size={28}/>
               </div>
             <ul className=" items-center justify-center h-full gap-5 font-bold  text-sm flex flex-col md:text-[1rem] font-open uppercase text-black">
               
