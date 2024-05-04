@@ -37,7 +37,7 @@ export default function Header() {
                 <a href="">Book Table</a>
               </li>
             </ul>
-            <div className={ isMenuOpen ? "fixed top-0 left-0 w-full h-screen bg-white z-10 duration-300" : "fixed top-0 left-[-100%] w-[300px] h-screen bg-white z-10 duration-300"}>
+            <div className={ isMenuOpen ? "fixed top-0 left-0 w-full h-screen bg-white z-10 duration-300" : "fixed top-0 left-[-1000%] w-[300px] h-screen bg-white z-10 duration-300"}>
               <div onClick={()=>setIsMenuOpen(false)} className="absolute cursor-pointer right-4 top-4">
               <IoMdClose size={28}/>
               </div>
