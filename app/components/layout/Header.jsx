@@ -13,7 +13,6 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router=useRouter()
   const pathname=usePathname()
-  console.log(pathname)
   return (
     <div className={`h-[88px] z-10  bg-secondary ${pathname == "/" ?  "bg-transparent" : "bg-secondary" }`}>
       <div className="container mx-auto flex items-center h-full justify-between">
