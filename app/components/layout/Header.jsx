@@ -7,15 +7,15 @@ import { FaSearch } from "react-icons/fa";
 import Title from "../ui/Title";
 import Search from "../ui/Search";
 import { IoMdClose } from "react-icons/io";
-
+import { usePathname, useRouter } from "next/navigation";
 export default function Header() {
   const [searchModal, setSearchModal] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-
-
+  const router=useRouter()
+  const pathname=usePathname()
+  console.log(pathname)
   return (
-    <div className="h-[88px] bg-secondary">
+    <div className={`h-[88px] z-10  bg-secondary ${pathname == "/" ?  "bg-transparent" : "bg-secondary" }`}>
       <div className="container mx-auto flex items-center h-full justify-between">
         <div className="p-2">
           <Logo />
