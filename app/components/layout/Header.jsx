@@ -8,6 +8,7 @@ import Title from "../ui/Title";
 import Search from "../ui/Search";
 import { IoMdClose } from "react-icons/io";
 import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
 export default function Header() {
   const [searchModal, setSearchModal] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -60,7 +61,7 @@ export default function Header() {
           </nav>
         </div>
         <div className="flex px-2 items-center gap-4">
-          <FaUser className="text-white hover:text-primary cursor-pointer" />
+         <Link href='/auth/login'> <FaUser className="text-white hover:text-primary cursor-pointer" /></Link>
           <FaShoppingCart className="text-white hover:text-primary cursor-pointer" />
           <FaSearch
             onClick={() => setSearchModal(true)}
