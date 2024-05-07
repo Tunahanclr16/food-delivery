@@ -3,7 +3,7 @@ import Title from "../components/ui/Title";
 import Pizza from ".././assets/f1.png"
 const Cart = () => {
   return (
-    <div className="flex justify-between items-center md:flex-row flex-col">
+    <div className="flex justify-between items-center lg:flex-row flex-col">
     <div className="md:min-h-[calc(100vh_-_433px)] flex items-center flex-1 p-10 overflow-x-auto w-full">
       <table className="w-full text-sm text-center text-gray-500 min-w-[1000px]">
         <thead className="text-xs text-gray-400 uppercase bg-gray-700">
@@ -33,7 +33,7 @@ const Cart = () => {
             </tbody>
           </table>
         </div>
-        <div className="bg-secondary md:h-screen flex flex-col justify-center text-white p-12 md:w-auto w-full   md:text-start !text-center">
+        <div className="bg-secondary lg:h-screen flex flex-col justify-center text-white p-12 lg:w-auto w-full   md:text-start !text-center">
           <Title addClass="text-[40px]"title={"Cart Total"}  />
               <div className="mt-6">
             <b>Subtotal: </b>$20 <br />
