@@ -29,10 +29,10 @@ export default function Header() {
             {" "}
             <ul className="sm:flex items-center gap-x-2 text-sm hidden md:text-[1rem] font-open uppercase text-white">
               <li className="px-[5px] py-[20px] hover:text-primary transition-all cursor-pointer">
-                <a href="">Home</a>
+                <Link href="/">Home</Link>
               </li>
               <li className="px-[5px] py-[20px] hover:text-primary transition-all cursor-pointer">
-                <a href="">Menu</a>
+                <a href="/menu">Menu</a>
               </li>
               <li className="px-[5px] py-[20px] hover:text-primary transition-all cursor-pointer">
                 <a href="">About</a>

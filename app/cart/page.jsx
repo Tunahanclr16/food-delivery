@@ -22,7 +22,7 @@ const Cart = () => {
                 </td>
                 <td>
                   <span>mayonez, acı sos, ketçap,</span>
-                </td>
+                </td> 
                 <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
                   $20
                 </td>

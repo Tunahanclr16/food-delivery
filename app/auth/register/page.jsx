@@ -11,12 +11,12 @@ export default function Register() {
             name: "",
             email: "",
             password: "",
+            confirmPassword: "",
         },
         onSubmit: (values) => {
             console.log(values);
         }
     });
-
     return (
         <div className="container mx-auto">
             <div className="flex flex-col items-center my-20">
@@ -25,6 +25,7 @@ export default function Register() {
                     <Input type="text" value={formik.values.name} name="name" placeholder="Your Name" onChange={formik.handleChange} />
                     <Input type="email" value={formik.values.email} name="email" placeholder="Your Email Address" onChange={formik.handleChange} />
                     <Input type="password" value={formik.values.password} name="password" placeholder="Your Password" onChange={formik.handleChange} />
+                    <Input type="password" value={formik.values.confirmPassword} name="confirmPassword" placeholder="Confirm Password" onChange={formik.handleChange} />
                     <div className='flex flex-col items-center gap-5 w-full mt-3'>
                         <button type="submit" className="btn-primary w-full">Register</button>
                         <button className="btn-primary !bg-secondary w-full">Github Login</button>
