@@ -1,59 +1,110 @@
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Title from '../components/ui/Title';
 import PizzaImage from '../assets/f1.png';
 import SizeImage from '../assets/size.png';
+import { useSelector } from 'react-redux';
 
-export default function ProductDetailPage() {
-  return (
-    <div className="flex flex-col md:flex-row items-center justify-center md:justify-between h-screen p-5 md:p-10">
-      <div className="w-full md:w-1/2 flex justify-center">
-        <div className="relative w-full h-96 ">
-          <Image src={PizzaImage} alt="Pizza" layout="fill" objectFit="contain" />
-        </div>
+const itemsExtra = [
+  {
+    id: 1,
+    name: "Extra 1",
+    price: 1,
+  },
+  {
+    id: 2,
+    name: "Extra 2",
+    price: 2,
+  },
+  {
+    id: 3,
+    name: "Extra 3",
+    price: 3,
+  },
+];
+
+const ProductDetail = () => {
+  const [prices, setPrices] = useState([10, 20, 30]);
+  const [price, setPrice] = useState(prices[0]);
+  const [size, setSize] = useState(0);
+  const [extraItems, setExtraItems] = useState(itemsExtra);
+  const [extras, setExtras] = useState([]);
+
+  const handleSize = (sizeIndex) => {
+    const difference = prices[sizeIndex] - prices[size];
+    setSize(sizeIndex);
+    changePrice(difference);
+  };
+
+  const changePrice = (number) => {
+    setPrice(price + number);
+  };
+
+const handleChange = (e, item) => {
+  const checked = e.target.checked;
+
+  if (checked) {
+    changePrice(item.price);
+    setExtras([...extras, item]);
+  } else {
+    changePrice(-item.price);
+    setExtras(extras.filter((extra) => extra.id !== item.id));
+  }
+};
+   return (
+    <div className="flex items-center md:h-screen gap-5 py-20 flex-wrap ">
+      <div className="relative md:flex-1 w-36 h-36 md:w-[80%] md:h-[80%] mx-auto">
+        <Image src={PizzaImage} alt="" layout="fill" objectFit="contain" />
       </div>
-      <div className="w-full md:w-1/2 mt-10 md:mt-0">
-        <Title addClass="text-4xl md:text-6xl mb-4" title="Good Pizza" />
-        <span className="text-primary text-2xl font-bold underline underline-offset-1 mb-4 block">$10</span>
-        <p className="text-sm md:text-base mb-6">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda fugit corporis ex laboriosam tenetur at
-          ad aspernatur eius numquam molestiae.
+      <div className="md:flex-1 md:text-start text-center">
+        <Title addClass="text-6xl">Good Pizza</Title>
+        <span className="text-primary text-2xl font-bold underline underline-offset-1 my-4 inline-block">
+          ${price}
+        </span>
+        <p className="text-sm my-4 md:pr-24">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+          fugit corporis ex laboriosam tenetur at ad aspernatur eius numquam
+          molestiae.
         </p>
-        <div className="mb-6">
-          <h4 className="text-xl font-bold mb-2">Choose the size</h4>
-          <div className="flex items-center gap-x-6">
-            <div className="relative w-8 h-8">
-              <Image src={SizeImage} alt="Size" layout="fill" objectFit="contain" />
-              <span className="absolute top-0 right-0 text-xs bg-primary rounded-full px-2 py-1 font-medium">
+        <div>
+          <h4 className="text-xl font-bold">Choose the size</h4>
+          <div className="flex items-center gap-x-20 md:justify-start justify-center">
+            <div onClick={()=>handleSize(0)} className="relative w-8 h-8 cursor-pointer">
+              <Image src={SizeImage} alt="" layout="fill" />
+              <span className="absolute top-0 -right-6 text-xs bg-primary rounded-full px-[5px] font-medium">
                 Small
               </span>
             </div>
-            <div className="relative w-12 h-12">
-              <Image src={SizeImage} alt="Size" layout="fill" objectFit="contain" />
-              <span className="absolute top-0 right-0 text-xs bg-primary rounded-full px-2 py-1 font-medium">
+            <div onClick={()=>handleSize(1)} className="relative w-12 h-12 cursor-pointer">
+              <Image src={SizeImage} alt="" layout="fill" />
+              <span className="absolute top-0 -right-6 text-xs bg-primary rounded-full px-[5px] font-medium">
                 Medium
               </span>
             </div>
-            <div className="relative w-16 h-16">
-              <Image src={SizeImage} alt="Size" layout="fill" objectFit="contain" />
-              <span className="absolute top-0 right-0 text-xs bg-primary rounded-full px-2 py-1 font-medium">
+            <div onClick={()=>handleSize(2)} className="relative w-16 h-16 cursor-pointer">
+              <Image src={SizeImage} alt="" layout="fill" />
+              <span className="absolute top-0 -right-6 text-xs bg-primary rounded-full px-[5px] font-medium">
                 Large
               </span>
             </div>
           </div>
         </div>
-        <div className="flex gap-4">
-          <label className="flex items-center gap-x-1">
-            <input type="checkbox" className="w-5 h-5 accent-primary" />
-            <span className="text-sm md:text-base font-semibold">Ketçap</span>
-          </label>
-          <label className="flex items-center gap-x-1">
-            <input type="checkbox" className="w-5 h-5 accent-primary" />
-            <span className="text-sm md:text-base font-semibold">Mayonez</span>
-          </label>
+        <div className="flex gap-x-4 my-6 md:justify-start justify-center">
+        {
+  extraItems.map((item,i)=>(
+    <label key={i} className="flex items-center gap-x-1">
+      <input onChange={(e) => handleChange(e, item)} type="checkbox" className="w-5 h-5 accent-primary" />
+      <span className="text-sm md:text-base font-semibold">{item.name}</span>
+    </label>
+  ))
+}
+        
         </div>
-        <button className="btn-primary mt-6">Add to Cart</button>
+        <button className="btn-primary">Add to Cart</button>
       </div>
     </div>
   );
-}
+};
+
+export default ProductDetail;
