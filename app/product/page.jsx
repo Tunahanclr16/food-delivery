@@ -30,7 +30,8 @@ const ProductDetail = () => {
   const [size, setSize] = useState(0);
   const [extraItems, setExtraItems] = useState(itemsExtra);
   const [extras, setExtras] = useState([]);
-
+  const cart=useSelector((state)=>state.cart)
+  console.log(cart)
   const handleSize = (sizeIndex) => {
     const difference = prices[sizeIndex] - prices[size];
     setSize(sizeIndex);
