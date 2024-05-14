@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Title from '../components/ui/Title';
 import PizzaImage from '../assets/f1.png';
 import SizeImage from '../assets/size.png';
-import { useSelector } from 'react-redux';
 
 const itemsExtra = [
   {
@@ -30,8 +29,6 @@ const ProductDetail = () => {
   const [size, setSize] = useState(0);
   const [extraItems, setExtraItems] = useState(itemsExtra);
   const [extras, setExtras] = useState([]);
-  const cart=useSelector((state)=>state.cart)
-  console.log(cart)
   const handleSize = (sizeIndex) => {
     const difference = prices[sizeIndex] - prices[size];
     setSize(sizeIndex);
