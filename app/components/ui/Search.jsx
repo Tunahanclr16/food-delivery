@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import OutsideClickHandler from "react-outside-click-handler";
 import Title from "./Title";
