@@ -2,7 +2,6 @@
 import Input from '@/app/components/Form/Input';
 import Title from '@/app/components/ui/Title';
 import { useFormik } from 'formik';
-import Link from 'next/link';
 import React from 'react';
 
 export default function Admin() {
