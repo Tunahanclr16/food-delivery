@@ -1,4 +1,3 @@
-import Image from "next/image";
 
 import HomePage from "./pages/Home/index.jsx"
 import Header from "./components/layout/Header.jsx";
