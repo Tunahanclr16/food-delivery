@@ -1,7 +1,7 @@
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import "./globals.css";
-import StoreProvider from "./redux/StoreProvider";
+import StoreProvider from "@/app/redux/StoreProvider";
 
 export const metadata = {
   title: "Create Next App",
@@ -12,16 +12,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div className='flex flex-col min-h-screen'>
-            <StoreProvider>
-              <Header/>
-              <main className='flex-grow'>
-                {children}
-              </main>
-              <Footer/>
-            </StoreProvider>
+        <div className="flex flex-col min-h-screen">
+          <StoreProvider>
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </StoreProvider>
         </div>
       </body>
     </html>
-  )
+  );
 }
