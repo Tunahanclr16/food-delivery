@@ -4,7 +4,7 @@ import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import "./globals.css";
 import { store } from "./redux/store";
-import StoreProvider from "./redux/storeProvider";
+import StoreProvider from "./redux/StoreProvider.js";
 
 export const metadata = {
   title: "Create Next App",
