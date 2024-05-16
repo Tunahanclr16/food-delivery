@@ -4,15 +4,13 @@ import Logo from "../ui/Logo";
 import { FaUser, FaBars } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
-import Title from "../ui/Title";
 import Search from "../ui/Search";
 import { IoMdClose } from "react-icons/io";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 export default function Header() {
   const [searchModal, setSearchModal] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const router = useRouter();
   const pathname = usePathname();
   return (
     <div
@@ -32,13 +30,13 @@ export default function Header() {
                 <Link href="/">Home</Link>
               </li>
               <li className="px-[5px] py-[20px] hover:text-primary transition-all cursor-pointer">
-                <a href="/menu">Menu</a>
+              <Link href="menu">Menu</Link>
               </li>
               <li className="px-[5px] py-[20px] hover:text-primary transition-all cursor-pointer">
                 <a href="">About</a>
               </li>
               <li className="px-[5px] py-[20px] hover:text-primary transition-all cursor-pointer">
-                <a href="">Book Table</a>
+              <Link href="">Book Table</Link>
               </li>
             </ul>
             <div

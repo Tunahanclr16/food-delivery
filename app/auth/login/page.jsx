@@ -28,7 +28,7 @@ export default function Login() {
                     <button className="btn-primary !bg-secondary w-full">Github Login</button>
                     <Link href="/auth/register">
                         <span className="text-sm underline cursor-pointer text-secondary">
-                            Don't have an account yet? Register here
+                        Don&apos;t have an account yet? Register here
                         </span>
                     </Link>
                </div>

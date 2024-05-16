@@ -1,5 +1,5 @@
+"use client"
 import React from 'react'
-
 export default function Input({ placeholder, type, name, onChange,value }) {
     return (
         <div className='w-full'>
