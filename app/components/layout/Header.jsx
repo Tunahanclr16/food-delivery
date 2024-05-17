@@ -8,10 +8,12 @@ import Search from "../ui/Search";
 import { IoMdClose } from "react-icons/io";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 export default function Header() {
   const [searchModal, setSearchModal] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const cart=useSelector((state)=>state.cart)
   return (
     <div
       className={`h-[88px] z-10  bg-secondary ${
@@ -30,13 +32,13 @@ export default function Header() {
                 <Link href="/">Home</Link>
               </li>
               <li className="px-[5px] py-[20px] hover:text-primary transition-all cursor-pointer">
-              <Link href="menu">Menu</Link>
+                <Link href="menu">Menu</Link>
               </li>
               <li className="px-[5px] py-[20px] hover:text-primary transition-all cursor-pointer">
                 <a href="">About</a>
               </li>
               <li className="px-[5px] py-[20px] hover:text-primary transition-all cursor-pointer">
-              <Link href="">Book Table</Link>
+                <Link href="">Book Table</Link>
               </li>
             </ul>
             <div
@@ -75,10 +77,14 @@ export default function Header() {
             {" "}
             <FaUser className="text-white hover:text-primary cursor-pointer" />
           </Link>
-          <Link href="/cart">
-            <FaShoppingCart className="text-white hover:text-primary cursor-pointer" />
-          </Link>
-
+          <span className="relative">
+                  <Link href="/cart">
+              <FaShoppingCart  className="hover:text-primary text-white transition-all cursor-pointer" />
+                  </Link>
+              <span className="w-4 h-4 text-xs grid place-content-center rounded-full bg-primary absolute -top-2 -right-3 text-black font-bold">
+                {cart.products.length === 0 ? "0" : cart.products.length}
+              </span>
+              </span>
           <FaSearch
             onClick={() => setSearchModal(true)}
             className="text-white hover:text-primary cursor-pointer"
