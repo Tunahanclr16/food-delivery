@@ -11,6 +11,8 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.4",
     "formik": "^2.4.6",
+    "mongodb": "^6.6.2",
+    "mongoose": "^8.3.5",
     "next": "14.2.3",
     "next-navigation": "^1.0.6",
     "react": "^18",
