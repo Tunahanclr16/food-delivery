@@ -1,9 +1,9 @@
-"use client";  // Bu, bileşenin istemci tarafında çalışacağını belirtir
+"use client";  
 import { SessionProvider } from "next-auth/react";
 import React from "react";
 
-const SessionWrapper = ({ children,  }) => {
-  return <SessionProvider >{children}</SessionProvider>;
+const SessionWrapper = ({ children, session }) => {
+  return <SessionProvider session={session}>{children}</SessionProvider>;
 };
 
 export default SessionWrapper;
