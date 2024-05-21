@@ -1,4 +1,3 @@
-// app/api/users/route.js
 import { NextResponse } from 'next/server';
 import dbConnect from '@/app/util/dbConnect';
 import User from '@/models/User';
@@ -12,10 +11,12 @@ export async function GET(req) {
     // Kullanıcıları JSON olarak yanıtla
     return NextResponse.json(users);
   } catch (error) {
+    // Hata detaylarını logla
     console.error('Error fetching users:', error);
-    return NextResponse.json({ error: 'Error fetching users' }, { status: 500 });
+    return NextResponse.json({ error: 'Error fetching users', details: error.message }, { status: 500 });
   }
 }
+
 export async function POST(req) {
   try {
     // MongoDB'ye bağlan

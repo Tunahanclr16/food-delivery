@@ -1,7 +1,6 @@
 "use client"
 import React from 'react';
 import { useFormik } from 'formik';
-import { signIn } from 'next-auth/react';
 import Input from "@/app/components/Form/Input";
 import Title from "@/app/components/ui/Title";
 import Link from "next/link";
@@ -13,10 +12,8 @@ export default function Login() {
       password: "",
     },
     onSubmit: async (values) => {
-
     },
   });
-
   return (
     <div className="container mx-auto">
       <div className="flex flex-col items-center my-20">
@@ -42,14 +39,6 @@ export default function Login() {
           <div className="flex flex-col items-center gap-5 w-full mt-3">
             <button type="submit" className="btn-primary w-full">
               Login
-            </button>
-            <button
-              onClick={() => signIn("github")}
-              type="button"
-              
-              className="btn-primary !bg-secondary w-full"
-            >
-              Github Login
             </button>
             <Link href="/auth/register">
               <span className="text-sm underline cursor-pointer text-secondary">

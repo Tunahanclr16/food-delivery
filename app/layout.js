@@ -3,9 +3,6 @@ import Header from "./components/layout/Header";
 import "./globals.css";
 import StoreProvider from "@/app/redux/StoreProvider";
 import React from "react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextAuth]";
-import SessionWrapper from "@/app/util/SessionWrapper";
 
 export const metadata = {
   title: "Create Next App",
@@ -13,18 +10,15 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const session = await getServerSession(authOptions);  
   return (
     <html lang="en">
       <body>
         <div className="flex flex-col min-h-screen">
-          <SessionWrapper>
      <StoreProvider>
             <Header />
             <main className="flex-grow">{children}</main>
             <Footer />
           </StoreProvider>
-          </SessionWrapper>
         </div>
       </body>
     </html>

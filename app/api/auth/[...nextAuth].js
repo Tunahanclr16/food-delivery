@@ -13,7 +13,7 @@ export const authOptions = {
     signIn: "/auth/login",
   },
   jwt: {
-    encryption: true, 
+    encryption: true,
   },
 };
 
