@@ -42,3 +42,17 @@ export async function POST(req) {
     return NextResponse.json({ error: 'Error creating user' }, { status: 500 });
   }
 }
+export async function PUT(req) {
+  try {
+    await dbConnect();
+    const { id, name, email, phoneNumber, address, job, password, confirmPassword } = await req.json();
+    const updatedUser = await User.findByIdAndUpdate(id, { name, email, phoneNumber, address, job, password, confirmPassword }, { new: true });
+    if (!updatedUser) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    }
+    return NextResponse.json(updatedUser);
+  } catch (error) {
+    console.error('Error updating user:', error);
+    return NextResponse.json({ error: 'Error updating user' }, { status: 500 });
+  }
+}

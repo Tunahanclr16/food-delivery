@@ -3,6 +3,7 @@ import Header from "./components/layout/Header";
 import "./globals.css";
 import StoreProvider from "@/app/redux/StoreProvider";
 import React from "react";
+import SessionWrapper from "./util/SessionWrapper";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,11 +15,13 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body>
         <div className="flex flex-col min-h-screen">
+          <SessionWrapper>
      <StoreProvider>
             <Header />
             <main className="flex-grow">{children}</main>
             <Footer />
           </StoreProvider>
+          </SessionWrapper>
         </div>
       </body>
     </html>
