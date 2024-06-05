@@ -31,8 +31,8 @@
     });
   
     return (
-      <div className="flex px-10 min-h-[calc(100vh_-_433px)]">
-        <div className="w-80">
+      <div className="flex px-10 min-h-[calc(100vh_-_433px)] lg:flex-row flex-col">
+      <div className="lg:w-80 w-100 flex-shrink-0">
           <div className="relative flex flex-col items-center px-10 py-5 border border-b-0">
             <b className="text-2xl mt-1">{formik.values.fullName}</b>
           </div>
@@ -55,9 +55,9 @@
             </li>
           </ul>
         </div>
-        <div className="p-8 w-full">
-          <Title addClass="text-[40px]" title="Account settings" />
-          <form onSubmit={formik.handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-8  w-full">
+          <Title addClass="md:text-[40px] text-[28px] sm:text-[32px]" title="Account settings" />
+          <form onSubmit={formik.handleSubmit} className=" md:grid md:grid-cols-2 flex flex-wrap items-center gap-4">
             <Input
               name="fullName"
               label="Full Name"

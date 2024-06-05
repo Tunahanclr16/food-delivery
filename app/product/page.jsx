@@ -24,6 +24,7 @@ const itemsExtra = [
     price: 3,
   },
 ];
+
 const foodItems = [
   {
     id: 1,
@@ -39,14 +40,16 @@ const foodItems = [
     ],
   },
 ];
+
 const ProductDetail = () => {
   const [prices, setPrices] = useState([10, 20, 30]);
   const [price, setPrice] = useState(prices[0]);
   const [size, setSize] = useState(0);
   const [extraItems, setExtraItems] = useState(itemsExtra);
   const [extras, setExtras] = useState([]);
-  const dispatch=useDispatch()
-  const cart=useSelector((state)=>state.cart)
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+
   const handleSize = (sizeIndex) => {
     const difference = prices[sizeIndex] - prices[size];
     setSize(sizeIndex);
@@ -57,23 +60,28 @@ const ProductDetail = () => {
     setPrice(price + number);
   };
 
-const handleChange = (e, item) => {
-  const checked = e.target.checked;
+  const handleChange = (e, item) => {
+    const checked = e.target.checked;
 
-  if (checked) {
-    changePrice(item.price);
-    setExtras([...extras, item]);
-  } else {
-    changePrice(-item.price);
-    setExtras(extras.filter((extra) => extra.id !== item.id));
-  }
-};
-const handleClick = () => {
-  dispatch(addProduct({ ...foodItems[0], extras, price, quantity: 1 }));
-};
+    if (checked) {
+      changePrice(item.price);
+      setExtras([...extras, item]);
+    } else {
+      changePrice(-item.price);
+      setExtras(extras.filter((extra) => extra.id !== item.id));
+    }
+  };
 
-console.log(cart)
-   return (
+  const handleClick = () => {
+    const existingProduct = cart.products.find((product) => product.id === foodItems[0].id);
+    if (existingProduct) {
+      dispatch(addProduct({ ...foodItems[0], extras, price, quantity: 1 }));
+    } else {
+      dispatch(addProduct({ ...foodItems[0], extras, price, quantity: 1 }));
+    }
+  };
+
+  return (
     <div className="flex items-center md:h-screen gap-5 py-20 flex-wrap ">
       <div className="relative md:flex-1 w-36 h-36 md:w-[80%] md:h-[80%] mx-auto">
         <Image src={PizzaImage} alt="" layout="fill" objectFit="contain" />
@@ -91,19 +99,19 @@ console.log(cart)
         <div>
           <h4 className="text-xl font-bold">Choose the size</h4>
           <div className="flex items-center gap-x-20 md:justify-start justify-center">
-            <div onClick={()=>handleSize(0)} className="relative w-8 h-8 cursor-pointer">
+            <div onClick={() => handleSize(0)} className="relative w-8 h-8 cursor-pointer">
               <Image src={SizeImage} alt="" layout="fill" />
               <span className="absolute top-0 -right-6 text-xs bg-primary rounded-full px-[5px] font-medium">
                 Small
               </span>
             </div>
-            <div onClick={()=>handleSize(1)} className="relative w-12 h-12 cursor-pointer">
+            <div onClick={() => handleSize(1)} className="relative w-12 h-12 cursor-pointer">
               <Image src={SizeImage} alt="" layout="fill" />
               <span className="absolute top-0 -right-6 text-xs bg-primary rounded-full px-[5px] font-medium">
                 Medium
               </span>
             </div>
-            <div onClick={()=>handleSize(2)} className="relative w-16 h-16 cursor-pointer">
+            <div onClick={() => handleSize(2)} className="relative w-16 h-16 cursor-pointer">
               <Image src={SizeImage} alt="" layout="fill" />
               <span className="absolute top-0 -right-6 text-xs bg-primary rounded-full px-[5px] font-medium">
                 Large
@@ -112,15 +120,12 @@ console.log(cart)
           </div>
         </div>
         <div className="flex gap-x-4 my-6 md:justify-start justify-center">
-        {
-  extraItems.map((item,i)=>(
-    <label key={i} className="flex items-center gap-x-1">
-      <input onChange={(e) => handleChange(e, item)} type="checkbox" className="w-5 h-5 accent-primary" />
-      <span className="text-sm md:text-base font-semibold">{item.name}</span>
-    </label>
-  ))
-}
-        
+          {extraItems.map((item, i) => (
+            <label key={i} className="flex items-center gap-x-1">
+              <input onChange={(e) => handleChange(e, item)} type="checkbox" className="w-5 h-5 accent-primary" />
+              <span className="text-sm md:text-base font-semibold">{item.name}</span>
+            </label>
+          ))}
         </div>
         <button onClick={handleClick} className="btn-primary">Add to Cart</button>
       </div>
