@@ -3,10 +3,11 @@ import Input from "@/app/components/Form/Input";
 import Title from "@/app/components/ui/Title";
 import axios from "axios";
 import { useFormik } from "formik";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; // next/router yerine next/navigation kullanın
 import React from "react";
+
 export default function Admin() {
-    const router=useRouter()
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -14,17 +15,18 @@ export default function Admin() {
     },
     onSubmit: async (values, actions) => {
       try {
-        const res = await axios.post("http://localhost:3000/api/users/admin", {
+        const res = await axios.post("/api/users/admin", {
           username: values.username,
           password: values.password,
         });
         console.log("success");
-                router.push("/admin")
+        router.push("/admin/profile");
       } catch (error) {
         console.log(error);
       }
     },
   });
+
   return (
     <div className="container mx-auto">
       <div className="flex flex-col items-center my-60">
@@ -35,7 +37,7 @@ export default function Admin() {
         >
           <Input
             type="text"
-            value={formik.values.text}
+            value={formik.values.username}
             name="username"
             placeholder="Your username"
             onChange={formik.handleChange}
