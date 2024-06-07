@@ -13,14 +13,14 @@ export default function Admin() {
       username: "",
       password: "",
     },
-    onSubmit: async (values, actions) => {
+    onSubmit: async (values, actions) => {  
       try {
         const res = await axios.post("/api/users/admin", {
           username: values.username,
           password: values.password,
         });
         console.log("success");
-        router.push("/admin/profile");
+        router.push("/admin");
       } catch (error) {
         console.log(error);
       }
